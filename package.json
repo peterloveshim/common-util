@@ -1,6 +1,6 @@
 {
   "name": "common-util",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/common-util.umd.cjs",
   "module": "./dist/common-util.js",
