@@ -1,14 +1,14 @@
 {
-  "name": "warp-util",
+  "name": "common-util",
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/warp-util.umd.cjs",
-  "module": "./dist/warp-util.js",
+  "main": "./dist/common-util.umd.cjs",
+  "module": "./dist/common-util.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/warp-util.js",
-      "require": "./dist/warp-util.umd.cjs"
+      "import": "./dist/common-util.js",
+      "require": "./dist/common-util.umd.cjs"
     }
   },
   "scripts": {

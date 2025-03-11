@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "warp-util",
-      fileName: "warp-util",
+      name: "common-util",
+      fileName: "common-util",
     },
   },
   plugins: [dts()],
