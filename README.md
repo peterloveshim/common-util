@@ -5,7 +5,7 @@
 ### 명령어
 
 ```bash
-$ npx typedoc src/index.ts
+$ npx typedoc
 ```
 
 ### html 실행
