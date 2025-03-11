@@ -1,3 +1,6 @@
+/// <reference types="vitest" />
+// Configure Vitest (https://vitest.dev/config/)
+
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
@@ -11,5 +14,12 @@ export default defineConfig({
       fileName: "common-util",
     },
   },
-  plugins: [dts()],
+  plugins: [
+    dts({
+      exclude: ["src/test", "**/*.test.ts"], // 타입 선언 빌드 과정에서 제외
+    }),
+  ],
+  test: {
+    // ...
+  },
 });
