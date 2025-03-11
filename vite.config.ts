@@ -19,7 +19,4 @@ export default defineConfig({
       exclude: ["src/test", "**/*.test.ts"], // 타입 선언 빌드 과정에서 제외
     }),
   ],
-  test: {
-    // ...
-  },
 });
