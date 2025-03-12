@@ -21,8 +21,16 @@ test("fCurrency test", () => {
 });
 
 test("fPercent test", () => {
-  expect(fPercent(10000, US_LOCALE)).toBe("10,000%");
-  expect(fPercent(10000, KR_LOCALE)).toBe("10,000%");
+  expect(
+    fPercent(10.12, US_LOCALE, {
+      maximumFractionDigits: 2,
+    })
+  ).toBe("10.12%");
+  expect(
+    fPercent(10.12, KR_LOCALE, {
+      maximumFractionDigits: 1,
+    })
+  ).toBe("10.1%");
 });
 
 test("fShortenNumber test", () => {
