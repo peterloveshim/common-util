@@ -13,25 +13,35 @@ export const isValidEmail = (email: string) => {
 /**
  * 입력값의 국제 전화번호 정규 표현식 여부 함수
  *
- * @param phoneNumber - 전화번호
+ * @param number - 전화번호
  * @returns 국제 전화번호 여부 리턴
  *
  */
-export const isValidPhoneNumber = (phoneNumber: string | number) => {
-  const phoneRegex = /^\+?[1-9]\d{1,14}$/;
-  return phoneRegex.test(String(phoneNumber));
+export const isValidPhoneNumber = (number: string) => {
+  const cleaned = number.replace(/[\s\-\(\)]/g, ""); // 공백, -, () 제거
+  const intlPhoneRegex = /^\+?[1-9]\d{6,14}$/; // E.164 기준 (1~15자리 숫자)
+
+  return intlPhoneRegex.test(cleaned);
 };
 
 /**
- * 입력값의 국내 전화번호 정규 표현식 여부 함수 (하이픈 X)
+ * 입력값의 국내 전화번호 정규 표현식 여부 함수
+ * - 하이픈 여부 상관없음
  *
- * @param phoneNumber - 전화번호
+ * @param number 전화번호
  * @returns 국내 전화번호 여부 리턴
  *
  */
-export const isValidKrPhoneNumber = (phoneNumber: string | number) => {
-  // 대한민국 휴대폰 번호 정규 표현식 (하이픈 포함 가능)
-  //const phoneRegex = /^01[0-9]-?\d{3,4}-?\d{4}$/;
-  const phoneRegex = /^010\d{8}$/; // 하이픈 제거
-  return phoneRegex.test(String(phoneNumber));
+export const isValidKrPhoneNumber = (number: string) => {
+  const cleaned = number.replace(/\D/g, ""); // 숫자만 남기기
+  if (!/^01[0-9]\d{7,8}$/.test(cleaned)) return false; // 기본 패턴 검사
+
+  // 중간 번호 (3~4자리) 추출
+  const middlePart =
+    cleaned.length === 10 ? cleaned.slice(2, 5) : cleaned.slice(3, 7);
+
+  // 중간 번호가 000~099이면 유효하지 않음 (비현실적인 번호)
+  if (/^0\d{2,3}$/.test(middlePart)) return false;
+
+  return true;
 };
